@@ -1,4 +1,17 @@
-import "./styles.css";
-import { greeting } from "./greeting.js";
+import { LinkedList } from "./linkedList.js";
 
-console.log(greeting);
+const list = new LinkedList;
+list.append("dog");
+list.append("cat");
+list.append("bird");
+list.append("lizard");
+
+console.log(list.toString());
+
+list.pop()
+console.log(list.toString());
+
+list.prepend("jason");
+console.log(list.toString());
+
+console.log(list.find("jason"));
