@@ -7,13 +7,13 @@ export class LinkedList {
     }
 
     append(value) {
-        if(this.headNode == null) {
+        const newNode = new Node();
+        newNode.value = value;
+        if(this.headNode === null) {
             this.headNode = this.tailNode = new Node;
             this.headNode.value = value;
         }
         else {
-            let newNode = new Node();
-            newNode.value = value;
             this.tailNode.nextNode = newNode;
             this.tailNode = newNode;
         }
@@ -64,18 +64,23 @@ export class LinkedList {
     }
 
     pop() {
-        if(this.headNode == null) return null;
-        else if(this.tailNode == null) this.headNode == null;
-        else {
-            let currentNode = this.headNode;
-            let prevNode = currentNode;
-            while(currentNode.nextNode != null) {
-                prevNode = currentNode;
-                currentNode = currentNode.nextNode;
+        if(this.headNode === null) return null;
+        
+        if(this.headNode === this.tailNode) {
+            const out = this.headNode.value;
+            this.headNode = this.tailNode = null;
+            return out;
+        }
+        
+        let prevNode = this.headNode;
+        let currentNode = this.headNode.nextNode;
+        while(currentNode.nextNode) {
+            prevNode = currentNode;
+            currentNode = currentNode.nextNode;
         }
         prevNode.nextNode = null;
-        currentNode = null;
-        }
+        this.tailNode = prevNode;
+        return currentNode.value;
     }
 
     contains(value) {

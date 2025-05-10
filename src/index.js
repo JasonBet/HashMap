@@ -1,17 +1,13 @@
-import { LinkedList } from "./linkedList.js";
+import { HashMap } from "./hashMap.js";
 
-const list = new LinkedList;
-list.append("dog");
-list.append("cat");
-list.append("bird");
-list.append("lizard");
+const newMap = new HashMap;
 
-console.log(list.toString());
+newMap.set('apple', 'red');
+newMap.set('banana', 'yellow');
+newMap.set('carrot', 'orange');
+newMap.set('dog', 'brown');
+newMap.set('frog', 'green');
 
-list.pop()
-console.log(list.toString());
+newMap.clear();
 
-list.prepend("jason");
-console.log(list.toString());
-
-console.log(list.find("jason"));
+console.log(newMap.entries());
